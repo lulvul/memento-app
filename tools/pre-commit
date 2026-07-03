@@ -1,0 +1,6 @@
+#!/bin/sh
+# Git pre-commit hook for memento-app: regenerate VERSION + app-manifest.txt
+# and stage them, so the pushed manifest always matches the pushed files.
+# Installed by: cp tools/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+tools/gen-app-manifest.sh || exit 1
+git add VERSION app-manifest.txt

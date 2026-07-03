@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "name": "Memento",                   "priority": 1, "action": "bin/memento.sh", "exitmenu": true },
+    { "name": "Memento: Update software",  "priority": 2, "action": "bin/update.sh",  "exitmenu": false },
+    { "name": "Memento: Roll back update", "priority": 3, "action": "bin/rollback.sh","exitmenu": false },
+    { "name": "Memento: Sync only",        "priority": 4, "action": "bin/sync.sh",    "exitmenu": false },
+    { "name": "Memento: UI test",          "priority": 5, "action": "bin/uitest.sh",  "exitmenu": true },
+    { "name": "Memento: fbink test",       "priority": 6, "action": "bin/hello.sh",   "exitmenu": true },
+    { "name": "Memento: TLS check",        "priority": 7, "action": "bin/tlscheck.sh","exitmenu": true },
+    { "name": "Memento: Input probe",      "priority": 8, "action": "bin/probe.sh",   "exitmenu": true }
+  ]
+}
