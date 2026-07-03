@@ -60,7 +60,7 @@ decide_zone() {  # $1 = x, $2 = y -> echoes action
     if (fx < 0) fx = 0; if (fx > 1) fx = 1;
     if (fy < 0) fy = 0; if (fy > 1) fy = 1;
     if (fy < 0.12) { print "BACK"; exit }     # full-width top strip = back/quit
-    if (fy > 0.90) { print "MENU"; exit }     # full-width bottom strip = settings (cover only; ignored elsewhere)
+    if (fy > 0.90) { print "MENU"; exit }     # full-width bottom strip = settings (cover/list/recipe; ignored while cooking)
     if (fx < 0.34) { print "PREV"; exit }     # left third
     if (fx > 0.66) { print "NEXT"; exit }     # right third
     print "SELECT";                            # middle

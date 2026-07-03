@@ -1,9 +1,9 @@
 ee480cdbcabcf9c1423ccddada1e6046  config.sh
 ac296c046757ac942b333da4a035a12a  bin/fwtest.sh
 12250855ebdc7c8196192ba80430c694  bin/hello.sh
-9f47f191be6598afe85bbd3aa277dc68  bin/input.sh
-4a911dae671dbed68dc95de1b69c26a8  bin/lib.sh
-5c68fbef0593665908927a5234f27d06  bin/memento.sh
+4f253f4503d7f27c881033729a72233a  bin/input.sh
+cc48755dc235a38ba8c920824e0f0483  bin/lib.sh
+011ea713358e9279c180f4d1ff518d7c  bin/memento.sh
 5432685ab8340286fe5a79d00833340d  bin/probe.sh
 d15e9c9250e21b31f852665cdc356900  bin/state.sh
 de490872ff3008ef6c45082171f45c2f  bin/sync.sh

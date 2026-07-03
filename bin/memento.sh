@@ -128,6 +128,7 @@ while :; do
       PREV)      sel=$(( sel > 0 ? sel - 1 : LIST_COUNT - 1 )) ;;
       NEXT)      sel=$(( sel < LIST_COUNT - 1 ? sel + 1 : 0 )) ;;
       SELECT)    rname=$(sed -n "$(( sel + 1 ))p" "$LISTFILE"); rpage=0; view="recipe" ;;
+      MENU)      view="settings" ;;       # bottom strip = settings, from anywhere
       BACK|QUIT) view="cover" ;;          # top strip backs out to the cover
       *)         continue ;;
     esac ;;
@@ -136,6 +137,7 @@ while :; do
       NEXT)      rpage=$(( rpage + 1 )) ;;          # draw_recipe clamps to last page
       PREV)      if [ "$rpage" -gt 0 ]; then rpage=$(( rpage - 1 )); else view="list"; fi ;;
       SELECT)    cook_start=$(date +%s); view="cooking" ;;   # center tap = start cooking
+      MENU)      view="settings" ;;
       BACK|QUIT) view="list" ;;
       *)         continue ;;
     esac ;;

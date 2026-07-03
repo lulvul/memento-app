@@ -142,8 +142,8 @@ draw_list() {
   [ "$pad" -lt 0 ] && pad=0
   pad_lines scr "$pad"
   scr="$scr
-
-top=quit   L=up  R=down  mid=open"
+L=up  R=down  mid=open
+top=cover   bottom=settings"
   fbink -c -x 1 -y 1 "$scr" >/dev/null 2>&1
 }
 
