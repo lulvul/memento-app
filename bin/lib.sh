@@ -38,12 +38,23 @@ pad_lines() {  # $1 = varname, $2 = count
   eval "$1=\$_v"
 }
 
-# strip markdown markers to plain text, then word-wrap to $WRAP columns
+# strip YAML frontmatter (the data layer; FORMAT.md v2 in the recipes repo)
+# and markdown markers to plain text, then word-wrap to $WRAP columns
 recipe_wrapped() {  # $1 = name (no .md) -> wrapped plain text on stdout
   f="$RECIPE_DIR/$1.md"
   [ -f "$f" ] || { printf 'Recipe not found:\n%s\n' "$1"; return 1; }
-  sed -e 's/^#\{1,6\}[[:space:]]*//' -e 's/\*\*//g' -e 's/`//g' "$f" \
+  awk 'NR==1 && $0 ~ /^---[ \t]*$/ {fm=1; next}
+       fm {if ($0 ~ /^---[ \t]*$/) fm=0; next} 1' "$f" \
+    | sed -e 's/^#\{1,6\}[[:space:]]*//' -e 's/\*\*//g' -e 's/`//g' \
     | { fold -s -w "$WRAP" 2>/dev/null || fold -w "$WRAP"; }
+}
+
+# read one frontmatter value from a recipe. $1 = name, $2 = key -> value or ""
+fm_get() {
+  awk -v k="$2" 'NR==1 && $0 !~ /^---[ \t]*$/ {exit}
+       NR>1 && $0 ~ /^---[ \t]*$/ {exit}
+       NR>1 && index($0, k ":") == 1 {sub("^" k ":[ \t]*", ""); print; exit}' \
+    "$RECIPE_DIR/$1.md" 2>/dev/null
 }
 
 # ---- list of synced recipes -------------------------------------------
